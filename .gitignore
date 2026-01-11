@@ -1,22 +1,3 @@
-# Node modules
 apps/webapp/node_modules/
-
-# Dossier de build
-apps/webapp/dist/
-
-# Logs
-apps/webapp/npm-debug.log*
-apps/webapp/yarn-debug.log*
-apps/webapp/yarn-error.log*
-
-# Fichiers système
-apps/webapp/.DS_Store
-apps/webapp/Thumbs.db
-
-# Optional: fichiers IDE
-apps/webapp/.vscode/
-apps/webapp/.idea/
-
-# Optional: fichiers de lock alternatifs
 apps/webapp/package-lock.json
-apps/webapp/yarn.lock
+apps/webapp/dist/
