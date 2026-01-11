@@ -1,8 +1,8 @@
 # Node modules
-#apps/webapp/node_modules/
+apps/webapp/node_modules/
 
 # Dossier de build
-#apps/webapp/dist/
+apps/webapp/dist/
 
 # Logs
 apps/webapp/npm-debug.log*
