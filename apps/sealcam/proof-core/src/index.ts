@@ -1,8 +1,24 @@
-import { readFileSync } from "fs"
-import { hashBufferInSegments } from "./hash"
+import { generateKeyPair, signManifest } from "./sign";
+import { verifyManifest } from "./verify";
 
-const file = readFileSync("sample.mp4")
+async function main() {
+  const manifest = {
+    videoId: "test",
+    segments: [],
+    globalHash: "abc123"
+  };
 
-const result = hashBufferInSegments(file, 1024 * 1024) // 1MB segments
+  const keys = await generateKeyPair();
 
-console.log(result.globalHash)
+  const signature = await signManifest(manifest, keys.privateKey);
+
+  const isValid = await verifyManifest(
+    manifest,
+    signature,
+    keys.publicKey
+  );
+
+  console.log("Signature valide :", isValid);
+}
+
+main();
