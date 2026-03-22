@@ -1,5 +1,7 @@
 // src/verify.ts
 import { webcrypto } from "crypto";
+import { canonicalize } from "./canonicalize";
+import { stripSignature } from "./manifest";
 
 const { subtle } = webcrypto;
 
@@ -26,7 +28,8 @@ export async function verifyManifest(
     ["verify"]
   );
 
-  const canonical = JSON.stringify(manifest);
+  const manifestToVerify = stripSignature(manifest);
+  const canonical = canonicalize(manifestToVerify);
   const data = new TextEncoder().encode(canonical);
 
   const signature = Buffer.from(signatureBase64, "base64");

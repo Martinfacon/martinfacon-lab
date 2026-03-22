@@ -1,5 +1,8 @@
 // src/sign.ts
 import { webcrypto } from "crypto";
+import { canonicalize } from "./canonicalize";
+import { stripSignature } from "./manifest";
+
 
 const { subtle } = webcrypto;
 
@@ -55,7 +58,8 @@ export async function signManifest(
     ["sign"]
   );
 
-  const canonical = JSON.stringify(manifest);
+  const manifestToSign = stripSignature(manifest);
+  const canonical = canonicalize(manifestToSign);
   const data = new TextEncoder().encode(canonical);
 
   const signature = await subtle.sign(

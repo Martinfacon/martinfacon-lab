@@ -15,7 +15,7 @@ It strictly implements the cryptographic proof protocol.
 
 ---
 
-# 🎯 Objective
+# Objective
 
 Provide a deterministic, independently verifiable proof that:
 
@@ -27,7 +27,7 @@ The module is designed to produce a self-contained proof manifest that can be ve
 
 ---
 
-# 🧱 Architecture Overview
+# Architecture Overview
 
 video file
 ↓
@@ -48,7 +48,7 @@ produce proof package
 
 ---
 
-# 📜 Proof Manifest (ProofManifestV1)
+# Proof Manifest (ProofManifestV1)
 
 The manifest is the formal representation of the proof.
 
@@ -72,7 +72,7 @@ The manifest is the central cryptographic contract between:
 
 ---
 
-# 🔐 Cryptographic Model
+# Cryptographic Model
 
 ## Hashing
 
@@ -101,7 +101,7 @@ The signature proves:
 
 ---
 
-# 🔄 Verification Model
+# Verification Model
 
 A verifier must:
 
@@ -116,7 +116,7 @@ If any byte of the video changes:
 
 ---
 
-# 📦 Proof Package Concept
+# Proof Package Concept
 
 A complete proof package contains:
 
@@ -135,7 +135,7 @@ No backend dependency is required.
 
 ---
 
-# ⚖️ What This Proves
+# What This Proves
 
 - The video file has not been altered since signing
 - The proof is cryptographically authentic
@@ -143,7 +143,7 @@ No backend dependency is required.
 
 ---
 
-# ⚠️ What This Does NOT Prove
+# What This Does NOT Prove
 
 - The real-world event is authentic
 - The timestamp is legally trusted (unless backed by TSA)
@@ -154,7 +154,7 @@ This module guarantees integrity, not factual truth.
 
 ---
 
-# 📁 Module Structure
+# Module Structure
 
 src/
 hash.ts → segment hashing logic
@@ -166,7 +166,7 @@ index.ts → test entrypoint
 
 ---
 
-# 🚀 Current Status (V1)
+# Current Status (V1)
 
 ✔ SHA-256 segment hashing  
 ✔ Global hash computation  
@@ -184,7 +184,7 @@ Not yet implemented:
 
 ---
 
-# 🧠 Design Principles
+# Design Principles
 
 - Deterministic
 - Offline verifiable
@@ -194,7 +194,7 @@ Not yet implemented:
 
 ---
 
-# 🔮 Future Evolution
+# Future Evolution
 
 Possible extensions:
 
@@ -206,7 +206,7 @@ Possible extensions:
 
 ---
 
-# 🧩 Role Within Sealcam
+# Role Within Sealcam
 
 `proof-core` is the cryptographic backbone.
 
@@ -222,7 +222,7 @@ The CLI/verifier tool will:
 
 ---
 
-# 🏁 Summary
+# Summary
 
 `proof-core` transforms a raw video file into a cryptographically sealed, independently verifiable digital proof.
 
