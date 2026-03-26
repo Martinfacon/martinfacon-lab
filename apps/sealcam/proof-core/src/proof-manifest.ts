@@ -1,4 +1,4 @@
-interface ProofManifestV1 {
+export interface ProofManifestV1 {
   protocolVersion: "1.0.0"
 
   video: {
