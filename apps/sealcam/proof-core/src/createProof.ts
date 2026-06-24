@@ -2,6 +2,7 @@
 
 import { hashBufferInSegments } from "./hash";
 import { signManifest } from "./sign";
+import { validateManifest } from "./manifest";
 import type { ProofManifestV1 } from "./proof-manifest";
 
 export async function createProof(
@@ -50,6 +51,11 @@ export async function createProof(
       value: ""
     }
   };
+
+  const validation = validateManifest(manifest);
+  if (!validation.valid) {
+    throw new Error(`Invalid manifest: ${validation.errors.join(", ")}`);
+  }
 
   // 3️⃣ Signature (utilise ton sign.ts actuel)
   const signature = await signManifest(manifest, privateKeyPem);

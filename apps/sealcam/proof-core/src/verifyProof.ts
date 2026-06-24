@@ -1,5 +1,6 @@
 import { hashBufferInSegments } from "./hash";
 import { verifyManifest } from "./verify";
+import { validateManifest } from "./manifest";
 import type { ProofManifestV1 } from "./proof-manifest";
 
 export async function verifyProof(
@@ -8,6 +9,15 @@ export async function verifyProof(
   publicKeyPem: string
 ): Promise<{ valid: boolean; errors: string[] }> {
   const errors: string[] = [];
+
+  const validation = validateManifest(manifest);
+  if (!validation.valid) {
+    errors.push(...validation.errors.map((error) => `Manifest validation: ${error}`));
+    return {
+      valid: false,
+      errors
+    };
+  }
 
   // Recalcul des hashes
   const { segments, globalHash } = hashBufferInSegments(
